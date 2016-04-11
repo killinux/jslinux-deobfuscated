@@ -84,6 +84,9 @@ function loadbinary(url,slot) {
             binaries[slot] = req.mozResponseArrayBuffer;
           } else if ('responseType' in req) {
             binaries[slot] = req.response;
+	    console.log("->loadbinary responseType response:"+binaries[slot]);
+	    console.log("-->loadbinary responseType response byteLength:"+binaries[slot].byteLength);
+	    console.log("--->loadbinary responseType response isView:"+ArrayBuffer.isView(binaries[slot]));
           } else {
             binaries[slot] = req.responseText;
           }
@@ -98,7 +101,7 @@ function loadbinary(url,slot) {
 };
 
 function checkbinaries() {
-    //console.log("checkbinaries: ",(binaries[0]!=false),(binaries[1]!=false),(binaries[2]!=false));
+    console.log("checkbinaries: ",(binaries[0]!=false),(binaries[1]!=false),(binaries[2]!=false));
     if((binaries[0] != false) && (binaries[1] != false) && (binaries[2] != false)){
         console.log("...binaries done loading, calling start()")
         start();

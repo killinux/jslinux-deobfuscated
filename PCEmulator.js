@@ -36,9 +36,13 @@ function PCEmulator(params) {
     cpu.get_hard_intno = this.pic.get_hard_intno.bind(this.pic);
 }
 
-PCEmulator.prototype.load_binary = function(binary_array, mem8_loc) { return this.cpu.load_binary(binary_array, mem8_loc); };
+PCEmulator.prototype.load_binary = function(binary_array, mem8_loc) { 
+    return this.cpu.load_binary(binary_array, mem8_loc); 
+};
 
-PCEmulator.prototype.start = function() { setTimeout(this.timer_func.bind(this), 10); };
+PCEmulator.prototype.start = function() { 
+    setTimeout(this.timer_func.bind(this), 10); 
+};
 
 PCEmulator.prototype.timer_func = function() {
     var exit_status, Ncycles, do_reset, err_on_exit, PC, cpu;
@@ -190,18 +194,6 @@ PCEmulator.prototype.register_ioport_write = function(start, len, iotype, io_cal
 
 PCEmulator.prototype.ioport80_write = function(mem8_loc, data) {}; //POST codes! Seem to be ignored?
 PCEmulator.prototype.reset = function() { this.request_request = 1; };
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
